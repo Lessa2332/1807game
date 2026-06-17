@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#f79d1e">
     <title>Завдання · 8-й загін</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,190 +14,121 @@
             align-items: center;
             background: linear-gradient(145deg, #f79d1e, #d35400);
             font-family: 'Segoe UI', Roboto, sans-serif;
-            padding: 16px;
+            padding: 15px;
         }
         .container {
             background: rgba(255, 255, 255, 0.96);
-            border-radius: 70px 20px 70px 20px;
+            border-radius: 50px 20px 50px 20px;
             padding: 30px 20px;
             max-width: 450px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 25px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
             border: 5px solid #fdcb6e;
         }
         .icon {
-            font-size: 4rem;
+            font-size: 3.5rem;
             background: #fdcb6e;
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: -50px auto 10px auto;
-            box-shadow: 0 8px 0 #b85c0a;
+            margin: -60px auto 10px auto;
+            box-shadow: 0 6px 0 #b85c0a;
             border: 3px solid white;
         }
-        h1 { font-size: 1.5rem; color: #2d1b0e; }
+        h1 { font-size: clamp(1.3rem, 5vw, 1.5rem); color: #2d1b0e; }
         .sub {
-            color: #6b3a0a;
-            font-weight: 700;
-            background: #ffeaa7;
-            display: inline-block;
-            padding: 4px 18px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
+            color: #6b3a0a; font-weight: 700; background: #ffeaa7;
+            display: inline-block; padding: 5px 18px; border-radius: 40px;
+            font-size: 0.9rem; margin-bottom: 15px;
         }
         .input-area {
-            background: #f1f2f6;
-            padding: 15px;
-            border-radius: 50px;
-            margin: 15px 0;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            border: 3px solid #dfe6e9;
+            background: #f1f2f6; padding: 15px; border-radius: 35px;
+            margin: 15px 0; display: flex; gap: 8px; align-items: center;
+            border: 3px solid #dfe6e9; justify-content: center;
         }
-        .input-area label {
-            font-weight: 700;
-            color: #2d3436;
-            font-size: 1.1rem;
-            white-space: nowrap;
-        }
+        .input-area label { font-weight: 700; color: #2d3436; font-size: 1.1rem; }
         .input-area input {
-            flex: 1;
-            padding: 14px 10px;
-            border: 2px solid #b2bec3;
-            border-radius: 40px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-align: center;
-            width: 80px;
-            background: white;
-            outline: none;
-            transition: 0.2s;
-            color: #2d3436;
+            flex: 1; padding: 10px; border: 2px solid #b2bec3;
+            border-radius: 25px; font-size: 1.3rem; font-weight: 800;
+            text-align: center; max-width: 100px; background: white;
+            outline: none; transition: 0.2s; color: #2d3436;
+            min-height: 48px; /* Сенсорна зона */
         }
-        .input-area input:focus {
-            border-color: #fdcb6e;
-            box-shadow: 0 0 0 4px rgba(253, 203, 110, 0.3);
-        }
-        .input-area input::placeholder {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #b2bec3;
-        }
+        .input-area input:focus { border-color: #fdcb6e; box-shadow: 0 0 0 4px rgba(253, 203, 110, 0.3); }
+        .input-area input::placeholder { font-size: 0.9rem; font-weight: 400; color: #b2bec3; }
         .btn {
-            background: linear-gradient(135deg, #ff9ff3, #f368e0);
-            border: none;
-            color: white;
-            font-weight: 800;
-            font-size: 1.2rem;
-            padding: 14px 20px;
-            border-radius: 60px;
-            cursor: pointer;
-            box-shadow: 0 6px 0 #8f2d7a;
-            transition: 0.05s linear;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
+            background: linear-gradient(135deg, #ff9ff3, #f368e0); border: none;
+            color: white; font-weight: 800; font-size: 1.1rem;
+            padding: 12px 20px; border-radius: 25px; cursor: pointer;
+            box-shadow: 0 6px 0 #8f2d7a; transition: 0.1s; min-height: 48px;
         }
-        .btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #8f2d7a;
-        }
+        .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #8f2d7a; }
         .reset-btn {
-            margin-top: 12px;
-            background: #b2bec3;
-            box-shadow: 0 5px 0 #636e72;
-            font-size: 1rem;
-            padding: 12px;
-            color: #2d3436;
-            width: 100%;
-            border: none;
-            border-radius: 60px;
-            font-weight: 700;
-            cursor: pointer;
+            margin-top: 12px; background: #b2bec3; box-shadow: 0 5px 0 #636e72;
+            font-size: 1rem; padding: 12px; color: #2d3436; width: 100%;
+            border: none; border-radius: 30px; font-weight: 700; cursor: pointer;
+            min-height: 48px; /* Сенсорна зона */
         }
         .reset-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #636e72; }
         
         .power-number {
-            font-size: 4.2rem;
-            font-weight: 900;
-            color: #e17055;
-            background: #fff0e0;
-            border-radius: 60px;
-            padding: 0 15px;
-            display: inline-block;
-            line-height: 1.2;
-            margin: 10px 0 5px;
+            font-size: clamp(3rem, 10vw, 4.2rem); /* Масштабується на малих екранах */
+            font-weight: 900; color: #e17055; background: #fff0e0;
+            border-radius: 40px; padding: 5px 20px; display: inline-block;
+            line-height: 1.2; margin: 10px 0 5px;
         }
         .power-desc {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2d3436;
-            background: #f8f9fa;
-            padding: 20px 15px;
-            border-radius: 30px;
-            margin: 12px 0;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #dfe6e9;
-            word-break: break-word;
-            line-height: 1.4;
+            font-size: 1.2rem; font-weight: 600; color: #2d3436;
+            background: #f8f9fa; padding: 20px 15px; border-radius: 25px;
+            margin: 12px 0; min-height: 80px; display: flex;
+            align-items: center; justify-content: center;
+            border: 3px solid #dfe6e9; word-break: break-word; line-height: 1.4;
         }
         .error-msg {
-            color: #e17055;
-            font-weight: 700;
-            background: #ffeaa7;
-            padding: 8px;
-            border-radius: 30px;
-            margin: 8px 0;
-            font-size: 0.95rem;
+            color: #d63031; font-weight: 700; background: #fab1a0;
+            padding: 8px; border-radius: 20px; margin: 8px 0; font-size: 0.95rem;
         }
-        .footer {
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #6b3a0a;
-            font-weight: 500;
-        }
-        .hint {
-            font-size: 0.85rem;
-            color: #636e72;
-            margin-bottom: 5px;
+        .footer { margin-top: 15px; font-size: 0.8rem; color: #6b3a0a; font-weight: 500; }
+        .hint { font-size: 0.85rem; color: #636e72; margin-bottom: 5px; }
+
+        /* Адаптація для дуже вузьких екранів */
+        @media (max-width: 340px) {
+            .input-area { flex-direction: column; border-radius: 25px; }
+            .input-area input { max-width: 100%; width: 100%; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="icon">🐱</div>
+    <div class="icon" aria-hidden="true">🐱</div>
     <h1>Таємні завдання</h1>
     <div class="sub">8-й загін · День дружби</div>
 
-    <!-- ПОЛЕ ДЛЯ ВВЕДЕННЯ НОМЕРА -->
     <div class="input-area">
         <label for="braceletInput">#</label>
-        <input type="number" id="braceletInput" min="1" max="57" placeholder="Номер" value="">
-        <button class="btn" id="showBtn">Отримати</button>
+        <input type="number" id="braceletInput" min="1" max="57" placeholder="Номер" inputmode="numeric" pattern="[0-9]*" aria-label="Введіть номер з браслета">
+        <button class="btn" id="showBtn" aria-label="Отримати завдання">Отримати</button>
     </div>
 
-    <div id="errorDisplay" class="error-msg" style="display: none;"></div>
+    <div id="errorDisplay" class="error-msg" style="display: none;" aria-live="assertive"></div>
     <div class="hint">Введи номер зі свого браслета (від 1 до 57)</div>
 
-    <!-- БЛОК РЕЗУЛЬТАТУ -->
-    <div class="power-number" id="powerNumber">#--</div>
-    <div class="power-desc" id="powerDesc">Введи номер, щоб дізнатися завдання</div>
+    <div aria-live="polite">
+        <div class="power-number" id="powerNumber">#--</div>
+        <div class="power-desc" id="powerDesc">Введи номер, щоб дізнатися завдання</div>
+    </div>
 
-    <button class="reset-btn" id="resetBtn">Очистити</button>
+    <button class="reset-btn" id="resetBtn" aria-label="Очистити поле">Очистити</button>
     <div class="footer">створила Олеся Олександрівна</div>
 </div>
 
 <script>
     (function() {
-        // ==================== 57 ЗАВДАНЬ (тільки текст) ====================
         const TASKS = [
             "Намалювати 5 веселих смайликів протягом 45 хвилин.",
             "Голосно сказати «8-й загін найкращий!» і плеснути в долоні.",
@@ -272,15 +204,17 @@
 
             if (isNaN(number) || number < 1 || number > TOTAL) {
                 errorDisplay.style.display = 'block';
-                errorDisplay.textContent = `❌ Введи число від 1 до ${TOTAL}! (у тебе на браслеті)`;
+                errorDisplay.textContent = `❌ Введи число від 1 до ${TOTAL}!`;
                 powerNumber.textContent = '#--';
                 powerDesc.textContent = 'Невірний номер, спробуй ще раз';
                 return;
             }
 
-            const task = TASKS[number - 1];
             powerNumber.textContent = `#${number}`;
-            powerDesc.textContent = task;
+            powerDesc.textContent = TASKS[number - 1];
+            
+            // Ховаємо клавіатуру на телефоні, щоб звільнити екран
+            braceletInput.blur();
         }
 
         function handleShow() {
@@ -308,19 +242,10 @@
             }
         });
 
-        window.addEventListener('load', () => {
-            braceletInput.focus();
-        });
-
-        braceletInput.addEventListener('blur', () => {
-            const val = parseInt(braceletInput.value, 10);
-            if (braceletInput.value.trim() !== '' && (isNaN(val) || val < 1 || val > TOTAL)) {
-                errorDisplay.style.display = 'block';
-                errorDisplay.textContent = `👉 Номер має бути від 1 до ${TOTAL}`;
-            } else {
-                errorDisplay.style.display = 'none';
-            }
-        });
+        // На мобільних пристроях краще не робити автофокус при завантаженні сторінки, 
+        // щоб клавіатура не вискакувала сама по собі і не перекривала екран.
+        // Але якщо дуже треба, можна розкоментувати:
+        // window.addEventListener('load', () => { braceletInput.focus(); });
     })();
 </script>
 </body>
