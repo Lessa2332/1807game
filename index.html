@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>57 суперсил · 8-й загін</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #f79d1e, #d35400);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            padding: 16px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 70px 20px 70px 20px;
+            padding: 30px 20px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.5);
+            border: 5px solid #fdcb6e;
+        }
+        .garfield-icon {
+            font-size: 4rem;
+            background: #fdcb6e;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -50px auto 10px auto;
+            box-shadow: 0 8px 0 #b85c0a;
+            border: 3px solid white;
+        }
+        h1 { font-size: 1.5rem; color: #2d1b0e; }
+        .sub {
+            color: #6b3a0a;
+            font-weight: 700;
+            background: #ffeaa7;
+            display: inline-block;
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+        .badge-23 {
+            background: #e17055;
+            color: white;
+            padding: 3px 18px;
+            border-radius: 40px;
+            font-weight: 900;
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .counter-status {
+            background: #dfe6e9;
+            padding: 8px 12px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #2d3436;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .power-number {
+            font-size: 4.2rem;
+            font-weight: 900;
+            color: #e17055;
+            background: #fff0e0;
+            border-radius: 60px;
+            padding: 0 15px;
+            display: inline-block;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+        .power-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #2d3436;
+            background: #dfe6e9;
+            padding: 12px 10px;
+            border-radius: 50px;
+            margin: 12px 0;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed #fdcb6e;
+            word-break: break-word;
+        }
+        .power-desc {
+            font-size: 1.1rem;
+            color: #2d3436;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            min-height: 70px;
+            border: 1px solid #eee;
+        }
+        .btn {
+            background: linear-gradient(135deg, #ff9ff3, #f368e0);
+            border: none;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            padding: 16px 10px;
+            border-radius: 60px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 7px 0 #8f2d7a;
+            transition: 0.05s linear;
+            letter-spacing: 1px;
+        }
+        .btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #8f2d7a;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            transform: translateY(4px);
+            box-shadow: 0 3px 0 #8f2d7a;
+            pointer-events: none;
+        }
+        .reset-btn {
+            margin-top: 12px;
+            background: #b2bec3;
+            box-shadow: 0 5px 0 #636e72;
+            font-size: 1rem;
+            padding: 12px;
+            color: #2d3436;
+        }
+        .reset-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #636e72; }
+        .footer {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: #b85c0a;
+            font-weight: 600;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #dfe6e9;
+            border-radius: 20px;
+            margin: 15px 0 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #fdcb6e, #e17055);
+            border-radius: 20px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="garfield-icon">🐱</div>
+    <h1>⚡ Суперсили загону</h1>
+    <div class="sub">8-й загін · День дружби</div>
+    <div class="badge-23">👩‍🏫 Ведуча №23</div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="counter-status" id="statusDisplay">Готовий видати силу #1 з 57</div>
+    
+    <div class="power-number" id="powerNumber">#--</div>
+    <div class="power-name" id="powerName">Натисни кнопку</div>
+    <div class="power-desc" id="powerDesc">Щоб активувати місію для героя</div>
+
+    <button class="btn" id="nextBtn">🚀 Видати силу!</button>
+    <button class="btn reset-btn" id="resetBtn">🔄 Почати з №1 (скинути)</button>
+    <div class="footer">🐱 Гарфілд схвалює! Кожна місія — унікальна.</div>
+</div>
+
+<script>
+    (function() {
+        // ==================== 57 УНІКАЛЬНИХ ЗАВДАНЬ ====================
+        const POWER_LIST = [
+            { name: "🎨 Художник", desc: "Намалювати 5 веселих смайликів протягом 45 хвилин." },
+            { name: "📢 Гучномовець", desc: "Голосно сказати «8-й загін найкращий!» і плеснути в долоні." },
+            { name: "🏋️ Спортсмен", desc: "Зробити 10 присідань і голосно порахувати їх уголос." },
+            { name: "🤝 Шукач", desc: "Знайти 3 людей із русявим волоссям і потиснути їм руки." },
+            { name: "☀️ Дарувальник", desc: "Намалювати на долоні сусіда маленьке сонечко (ручкою)." },
+            { name: "✈️ Авіаконструктор", desc: "Скласти паперового журавлика або літачка за 2 хвилини." },
+            { name: "🎤 Співак", desc: "Заспівати 2 рядки будь-якої пісні про дружбу." },
+            { name: "💬 Компліментатор", desc: "Сказати комплімент кожному, хто стоїть праворуч від тебе." },
+            { name: "🤖 Робот", desc: "Протанцювати 15 секунд, як робот (з механічними рухами)." },
+            { name: "👀 Спостерігач", desc: "Знайти людину з таким самим кольором очей, як у тебе." },
+            { name: "🌟 Підтримка", desc: "Голосно похвалити ведучу (№23) за чудовий настрій." },
+            { name: "✍️ Колекціонер", desc: "Зібрати підписи 5 друзів на своєму паперовому браслеті." },
+            { name: "😂 Комік", desc: "Розказати найсмішніший жарт, який ти знаєш." },
+            { name: "🙏 Ввічливий", desc: "Сказати «Дякую!» 5 різним людям протягом наступної гри." },
+            { name: "🌉 Містобудівник", desc: "Зробити «місток» зі своїх рук, щоб під ним пролізла інша дитина." },
+            { name: "🔍 Детектив", desc: "Знайти 2 речі зеленого кольору в кімнаті й показати всім." },
+            { name: "📖 Читач", desc: "Голосно прочитати будь-яке правило, написане на дошці." },
+            { name: "🎨 Портретист", desc: "Намалювати портрет нового друга на папірці за 1 хвилину." },
+            { name: "🦩 Фламінго", desc: "Прострибати на одній нозі навколо стільця." },
+            { name: "❤️ Патріот", desc: "Сказати «Я люблю свій загін!» голосніше за всіх." },
+            { name: "👏 Аплодисменти", desc: "Поаплодувати своїй команді протягом 5 секунд." },
+            { name: "🤚 Вгадайка", desc: "Заплющити очі та вгадати на дотик, хто стоїть поруч." },
+            { name: "🌊 Хвиля", desc: "Зробити «хвилю» руками, щоб сусіди повторювали за тобою." },
+            { name: "🎬 Кіноман", desc: "Дізнатися 3 улюблені мультфільми своїх сусідів." },
+            { name: "🦘 Кенгуру", desc: "Зобразити кенгуру та проскакати по колу кімнати." },
+            { name: "📏 Вимірювач", desc: "Знайти найвищу людину в кімнаті й стати поряд з нею." },
+            { name: "🤗 Обіймашка", desc: "Сказати «Ми разом!» і обійняти сусіда ліворуч." },
+            { name: "🖋 Каліграф", desc: "Написати своє ім'я на спільному аркуші красивими літерами." },
+            { name: "💇‍♂️ Стиліст", desc: "Зробити комплімент зачісці 3 дівчатам або хлопцям." },
+            { name: "🤫 Таємниця", desc: "Прошепотіти секретне слово «Гарфілд» на вухо 4 людям." },
+            { name: "🌀 Веретено", desc: "Покрутитися на одному місці 5 разів і не впасти." },
+            { name: "🔄 Міняйло", desc: "Знайти пару та обмінятися з нею браслетами на 1 хвилину." },
+            { name: "📣 Оголошувач", desc: "Голосно зачитати назву своєї суперсили всій кімнаті." },
+            { name: "💖 Серценос", desc: "Намалювати 3 сердечка й подарувати тому, хто першим посміхнеться тобі." },
+            { name: "👓 Оптиміст", desc: "Порахувати, скільки дітей у кімнаті мають окуляри." },
+            { name: "☀️ Мотиватор", desc: "Сказати «Сьогодні чудовий день!» 5 разів поспіль без сміху." },
+            { name: "☀️ Літній друг", desc: "Знайти людину, яка народилася влітку, і потанцювати з нею." },
+            { name: "🧹 Чистюля", desc: "Зібрати 5 папірців із підлоги та викинути в смітник." },
+            { name: "🏠 Архітектор", desc: "Намалювати будинок для своєї суперсили на аркуші." },
+            { name: "💡 Генератор ідей", desc: "Придумати круту спільну назву для всієї команди й вигукнути її." },
+            { name: "🎯 Цілеспрямований", desc: "Сказати «Бути другом — це круто!» голосно й чітко." },
+            { name: "🤝 Помічник", desc: "Подати руку допомоги тому, хто сидить найдальше від тебе." },
+            { name: "🥁 Ритмік", desc: "Зробити 5 оплесків над головою та 5 перед собою." },
+            { name: "📩 Поштар", desc: "Написати побажання на папірці й кинути в спільний капелюх." },
+            { name: "🍕 Мім", desc: "Зобразити, як ти їси улюблену страву (без слів, щоб вгадали)." },
+            { name: "🔢 Математик", desc: "Знайти у когось на браслеті парне число й показати його ведучій." },
+            { name: "🏆 Гордість", desc: "Сказати «Я пишаюся своїми новими друзями!»" },
+            { name: "🤞 Обіцянка", desc: "Підняти руку й пообіцяти бути чесним і добрим сьогодні." },
+            { name: "☔ Художник дощу", desc: "Намалювати дощ із краплинок у формі сердець." },
+            { name: "👍 Погоджувач", desc: "Похитати головою «так» на кожне запитання ведучої." },
+            { name: "😊 Усмішка", desc: "Скласти комплімент про посмішку ведучій №23." },
+            { name: "📜 Поет", desc: "Розказати будь-який вірш (хоча б 4 рядки)." },
+            { name: "🫶 Творець жестів", desc: "Вигадати новий жест для слова «Дружба» й показати всім." },
+            { name: "🔍 Слідопит", desc: "Знайти й привітатися з тим, хто має номер на браслеті менший за 10." },
+            { name: "⚡ Активатор", desc: "Сказати «Суперсила активована!» після кожного виконаного завдання." },
+            { name: "🏊 Плавець", desc: "Зобразити, як ти пливеш брасом через усю кімнату." },
+            { name: "🌈 Доброзичливець", desc: "Побажати всім гарного дня, помахати рукою й посміхнутися." }
+        ];
+
+        const TOTAL = POWER_LIST.length; // 57
+        const STORAGE_KEY = 'garfield_power_index_57_v2';
+
+        const statusDisplay = document.getElementById('statusDisplay');
+        const powerNumber = document.getElementById('powerNumber');
+        const powerName = document.getElementById('powerName');
+        const powerDesc = document.getElementById('powerDesc');
+        const nextBtn = document.getElementById('nextBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const progressFill = document.getElementById('progressFill');
+
+        function getCurrentIndex() {
+            const stored = sessionStorage.getItem(STORAGE_KEY);
+            if (stored !== null) {
+                const val = parseInt(stored, 10);
+                if (!isNaN(val) && val >= 0 && val <= TOTAL) return val;
+            }
+            return 0;
+        }
+
+        function saveCurrentIndex(index) {
+            sessionStorage.setItem(STORAGE_KEY, index.toString());
+        }
+
+        function updateDisplay(index) {
+            const progress = Math.min((index / TOTAL) * 100, 100);
+            progressFill.style.width = progress + '%';
+
+            if (index >= TOTAL) {
+                powerNumber.textContent = '🎉';
+                powerName.textContent = 'ВСІ 57 АКТИВОВАНІ!';
+                powerDesc.textContent = 'Ти об\'єднав увесь 8-й загін. Гарфілд гордиться тобою!';
+                statusDisplay.textContent = '✅ Усі 57 сил роздано! Місію виконано!';
+                nextBtn.disabled = true;
+                return;
+            }
+
+            const power = POWER_LIST[index];
+            const displayIndex = index + 1;
+            powerNumber.textContent = `#${displayIndex}`;
+            powerName.textContent = power.name;
+            powerDesc.textContent = power.desc;
+            statusDisplay.textContent = `Видано ${displayIndex} з ${TOTAL} · Наступна: #${displayIndex + 1}`;
+            nextBtn.disabled = false;
+        }
+
+        function giveNextPower() {
+            let current = getCurrentIndex();
+            if (current >= TOTAL) {
+                updateDisplay(current);
+                return;
+            }
+            updateDisplay(current);
+            const nextIndex = current + 1;
+            saveCurrentIndex(nextIndex);
+        }
+
+        function resetAll() {
+            saveCurrentIndex(0);
+            const current = getCurrentIndex();
+            // Показуємо готовність, але не активуємо силу автоматично
+            const power = POWER_LIST[0];
+            powerNumber.textContent = '#--';
+            powerName.textContent = 'Готовий до старту';
+            powerDesc.textContent = 'Натисни "Видати силу!" для першого героя';
+            statusDisplay.textContent = 'Скинуто! Готовий видати силу #1 з 57';
+            progressFill.style.width = '0%';
+            nextBtn.disabled = false;
+        }
+
+        function init() {
+            if (sessionStorage.getItem(STORAGE_KEY) === null) {
+                saveCurrentIndex(0);
+            }
+            const current = getCurrentIndex();
+            if (current < TOTAL) {
+                const power = POWER_LIST[current];
+                powerNumber.textContent = `#${current + 1}`;
+                powerName.textContent = power.name;
+                powerDesc.textContent = power.desc;
+                statusDisplay.textContent = `Готовий видати силу #${current + 1} з ${TOTAL}`;
+                progressFill.style.width = ((current / TOTAL) * 100) + '%';
+                nextBtn.disabled = false;
+            } else {
+                updateDisplay(current);
+            }
+        }
+
+        nextBtn.addEventListener('click', giveNextPower);
+        resetBtn.addEventListener('click', resetAll);
+        init();
+    })();
+</script>
+</body>
+</html>
